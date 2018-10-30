@@ -60,3 +60,41 @@ int main(void)
 
 	return 0;
 }
+// update on 20181030
+#include <stdio.h>
+#define LEN 10 //假定数组长度为10
+
+void Insert_sorting(int arr[])
+{
+	int j = 1; 
+	int r = 1; 
+	int temp = arr[j];
+	for (j = 1; j < LEN; j++)
+	{
+		int r = j;
+		while (temp < arr[r - 1] && r > 0) {
+			arr[r] = arr[r - 1];
+			arr[r - 1] = temp; //swap(arr[r], arr[r-1])
+			r--;
+			temp = arr[r]; //update temp
+		}
+		if (r == 0)
+			arr[0] = temp;
+		if(j != LEN - 1)
+			temp = arr[j + 1];
+	}
+
+}
+
+int main(void)
+{
+	int arr[10] = { 2, 4, 6, 1, 3, 5, 9, 0, 7, 8 };
+	Insert_sorting(arr);
+
+	for (int i = 0; i < LEN; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+
+	return 0;
+}
